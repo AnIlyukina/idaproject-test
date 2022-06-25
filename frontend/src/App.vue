@@ -1,7 +1,7 @@
 <script>
 import FormAddProduct from './components/FormAddProduct.vue';
 import ProductList from './components/ProductList.vue';
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: "App",
@@ -9,13 +9,19 @@ export default {
     FormAddProduct,
     ProductList
   },
-  computed: {
-    ...mapGetters(['productList'])
-  },
   data(){
     return {
     }
-  }
+  },
+  created () {
+    this.setProduct()
+  },
+  computed: {
+    ...mapGetters(['productList'])
+  },
+  methods: {
+    ...mapActions(['setProduct'])
+  },
 }
 
 </script>
