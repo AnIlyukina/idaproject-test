@@ -3,11 +3,22 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const errorHandler = require('./middlewares/errorHandler');
+
 const { productRoutes } = require('./routes/product')
 
 const { PORT = 3000 } =  process.env;
 
+const cors=require("cors");
+
+const corsOptions ={
+   origin:'*', 
+   credentials:true,
+   optionSuccessStatus:200,
+}
+
 const app = express()
+
+app.use(cors(corsOptions))
 
 app.use(express.json());
 
