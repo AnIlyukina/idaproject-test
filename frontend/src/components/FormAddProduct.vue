@@ -2,6 +2,7 @@
   <div class="catalog__form">
     <form
       class="catalog__form-fixed"
+      @submit.prevent="addProduct"
     >
       <label class="catalog__form-label">
         <h5 class="catalog__form-label-title">
@@ -18,7 +19,9 @@
         >
       </label>
       <div class="catalog__form-error">
-        <span>
+        <span
+          v-if="errorValidation.name"
+        >
             Поле является обязательным
         </span>
       </div>
@@ -52,7 +55,8 @@
       </label>
       <div
         class="catalog__form-error">
-        <span>
+        <span
+          v-if="errorValidation.link">
           Поле является обязательным
         </span>
       </div>
@@ -73,13 +77,15 @@
       </label>
       <div
         class="catalog__form-error">
-        <span>
+        <span
+          v-if="errorValidation.price">
           Поле является обязательным
         </span>
       </div>
       <button
+        :disabled="isValidForm"
         type="submit"
-        class="catalog__form-button"
+        :class="[isValidForm ? 'disabled' : '', 'catalog__form-button']"
       >
         Добавить товар
       </button>
@@ -93,12 +99,46 @@ export default {
   name: "FormAddProduct",
   data() {
     return {
-        product: {
+      errorValidation: {
+        name: false,
+        link: false,
+        price: false
+      },
+      product: {
         name: '',
         link: '',
         description: '',
         price: ''
       }
+    }
+  },
+  watch: {
+    'product.name'(newValue) {
+      newValue === '' ? this.errorValidation.name = true :  this.errorValidation.name = false
+    },
+    'product.link'(newValue) {
+      newValue === '' ? this.errorValidation.link = true :  this.errorValidation.link = false
+    },
+    'product.price'(newValue) {
+      newValue === '' ? this.errorValidation.price = true :  this.errorValidation.price = false
+    }
+  },
+  computed: {
+    isValidForm () {
+      if (this.product.name === '' || this.product.link === '' || this.product.price === ''){
+        return true
+      } else {
+        return false
+      }
+    },
+  },
+  methods: {
+    addProduct() {
+
+    },
+    applyMask(value){
+      console.log('ds')
+      this.product.price = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
     }
   }
 }
