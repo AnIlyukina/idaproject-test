@@ -1,0 +1,26 @@
+.catalog{
+    &__header{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding-bottom: 16px;
+    }
+  
+    &__header-title{
+      margin: 0;
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 35px;
+    }
+  
+    &__header-select{
+      max-width: 121px;
+      width: 100%;
+      font-size: 12px;
+      border: none;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      padding: 10px 16px 11px;
+    }
+  
+}

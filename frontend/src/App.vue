@@ -7,6 +7,60 @@ export default {
   components: {
     FormAddProduct,
     ProductList
+  },
+  data() {
+    return {
+      productList: [
+        {
+          name: 'Наименование товара',
+          description: 'Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк',
+          price: 10000,
+          image: 'product.png'
+        },
+        {
+          name: 'Наименование товара',
+          description: 'Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк',
+          price: 10000,
+          image: 'product.png'
+        },
+         {
+          name: 'Наименование товара',
+          description: 'Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк',
+          price: 10000,
+          image: 'product.png'
+        },
+        {
+          name: 'Наименование товара',
+          description: 'Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк',
+          price: 10000,
+          image: 'product.png'
+        },
+         {
+          name: 'Наименование товара',
+          description: 'Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк',
+          price: 10000,
+          image: 'product.png'
+        },
+        {
+          name: 'Наименование товара',
+          description: 'Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк',
+          price: 10000,
+          image: 'product.png'
+        },
+         {
+          name: 'Наименование товара',
+          description: 'Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк',
+          price: 10000,
+          image: 'product.png'
+        },
+        {
+          name: 'Наименование товара',
+          description: 'Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк',
+          price: 10000,
+          image: 'product.png'
+        }
+      ]
+    }
   }
 }
 
@@ -23,11 +77,18 @@ export default {
     </div>
     <div class="catalog__content">
       <FormAddProduct/>
-      <ProductList/>
+      <ProductList
+        :productList="productList"
+      />
     </div>
   </section>
 </template>
 
-<style>
-
+<style lang="scss">
+@import './assets/scss/variables.scss';
+@import "assets/scss/fonts.scss";
+@import "assets/scss/components/body.scss";
+@import "assets/scss/components/catalog/catalog.scss";
+@import "assets/scss/components/catalog/catalog__header.scss";
 </style>
+
