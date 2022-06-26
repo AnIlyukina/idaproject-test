@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="catalog__product">
         <div class="catalog__product-icon-delete" @click="deleteItem"/>
         <img :src='product.imageLink' class="catalog__product-image"/>
         <div class="catalog__product-info">

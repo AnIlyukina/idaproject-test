@@ -18,7 +18,7 @@ export default {
       options:[
         {name: 'min цена', value: 'min'},
         {name: 'max цена', value: 'max'},
-        {name: 'имя', value: 'name'},
+        {name: 'по наименованию', value: 'name'},
       ],
     }
   },
@@ -31,7 +31,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['productList', 'loading']),
+    ...mapGetters(['productList', 'loading', 'errorMessage']),
     sortedProductList() {
       this.sortProductList(this.selectedOption)
     }
@@ -87,15 +87,15 @@ export default {
           </select>
         </div>
         <div class="catalog__content">
-          <FormAddProduct
-            :selectedOption="selectedOption"
-          />
+          <FormAddProduct/>
           <ProductList
             :productList="productList"
           />
         </div>
       </section>
-      <Loader v-if="loading"/>
+      <transition>
+        <Loader v-if="loading"/>
+      </transition>
   </div>
 </template>
 
@@ -105,5 +105,14 @@ export default {
 @import "assets/scss/components/body.scss";
 @import "assets/scss/components/catalog/catalog.scss";
 @import "assets/scss/components/catalog/catalog__header.scss";
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s;
+}
 </style>
 

@@ -1,6 +1,7 @@
 <template>
-    <div>
-        загрузка
+    <div class="catalog__loader">
+        <div class="catalog__loader-back"></div>
+        <div class="catalog__loader-icon"></div>
     </div>
 </template>
 
@@ -10,6 +11,6 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss">
+@import '../assets/scss/components/catalog/catalog__loader.scss';
 </style>
