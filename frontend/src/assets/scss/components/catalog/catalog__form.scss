@@ -79,6 +79,10 @@
         width: 100%;
         padding: 10px 0 11px;
     }
+
+    &__form-button:hover{
+        cursor: url("./src/assets/images/catalog__cursor.svg"), pointer;
+    }
     
     .disabled{
         background-color: #EEEEEE;
@@ -95,5 +99,9 @@
         border-radius: 10px;
         border: none;
         padding: 10px 16px;
+    }
+
+    &__form-textarea::placeholder{
+        color: #B4B4B4;
     }
 }

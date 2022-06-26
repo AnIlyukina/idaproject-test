@@ -34,7 +34,6 @@
           v-model="product.description"
           placeholder="Введите описание товара"
           class="catalog__form-textarea"
-          wrap="off"
           cols="30"
           rows="5"
         />
@@ -115,10 +114,6 @@ export default {
     }
   },
   props: {
-    selectedOption: {
-      type: String,
-      default: ''
-    }
   },
   computed: {
     isValidForm () {
@@ -147,7 +142,6 @@ export default {
         description: '',
         price: ''
       }
-      this.selectedOption = ''
     },
     addProduct() {
       this.createProduct(this.product)   

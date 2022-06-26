@@ -6,9 +6,9 @@
                 :key="index"
                 class="catalog__product-item"
                 >
-            <ProductItem
-                :product="product"
-            />
+                <ProductItem
+                  :product="product"
+                />
             </li>
         </ul>
     </div>
