@@ -2,12 +2,14 @@
   "name": "idaproject-test",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 3001",
     "build": "vite build",
     "preview": "vite preview --port 4173",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "maska": "^1.5.0",
+    "v-mask": "^2.3.0",
     "vue": "^3.2.37",
     "vuex": "^4.0.2"
   },

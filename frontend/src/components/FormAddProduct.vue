@@ -16,6 +16,7 @@
           type="text"
           placeholder="Введите наименование товара"
           class="catalog__form-input"
+          @input="validationName"
         >
       </label>
       <div class="catalog__form-error">
@@ -47,10 +48,11 @@
           />
         </h5>
         <input
-          v-model="product.link"
+          v-model="product.imageLink"
           type="text"
           class="catalog__form-input"
           placeholder="Введите ссылку"
+          @input="validationImageLink"
         >
       </label>
       <div
@@ -72,7 +74,7 @@
           type="number"
           placeholder="Введите цену"
           class="catalog__form-input"
-          onchange="applyMask"
+          @input="validationPrice"
         />
       </label>
       <div
@@ -93,8 +95,8 @@
   </div>
 
 </template>
-
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: "FormAddProduct",
   data() {
@@ -106,26 +108,21 @@ export default {
       },
       product: {
         name: '',
-        link: '',
+        imageLink: '',
         description: '',
         price: ''
       }
     }
   },
-  watch: {
-    'product.name'(newValue) {
-      newValue === '' ? this.errorValidation.name = true :  this.errorValidation.name = false
-    },
-    'product.link'(newValue) {
-      newValue === '' ? this.errorValidation.link = true :  this.errorValidation.link = false
-    },
-    'product.price'(newValue) {
-      newValue === '' ? this.errorValidation.price = true :  this.errorValidation.price = false
+  props: {
+    selectedOption: {
+      type: String,
+      default: ''
     }
   },
   computed: {
     isValidForm () {
-      if (this.product.name === '' || this.product.link === '' || this.product.price === ''){
+      if (this.product.name === '' || this.product.imageLink === '' || this.product.price === ''){
         return true
       } else {
         return false
@@ -133,13 +130,29 @@ export default {
     },
   },
   methods: {
-    addProduct() {
-
+    ...mapActions(['createProduct']),
+    validationName(){
+      this.product.name === '' ? this.errorValidation.name = true :  this.errorValidation.name = false
     },
-    applyMask(value){
-      console.log('ds')
-      this.product.price = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
-    }
+    validationImageLink(){
+      this.product.imageLink === '' ? this.errorValidation.link = true :  this.errorValidation.link = false
+    },
+    validationPrice(){
+      this.product.price === '' ? this.errorValidation.price = true :  this.errorValidation.price = false
+    },
+    clearFields() {
+      this.product = {
+        name: '',
+        imageLink: '',
+        description: '',
+        price: ''
+      }
+      this.selectedOption = ''
+    },
+    addProduct() {
+      this.createProduct(this.product)   
+      this.clearFields() 
+    },
   }
 }
 </script>

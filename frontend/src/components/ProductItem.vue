@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class="catalog__product-icon-delete"/>
-        <img :src='"./src/assets/images/" + product.image'/>
+        <div class="catalog__product-icon-delete" @click="deleteItem"/>
+        <img :src='product.imageLink' class="catalog__product-image"/>
         <div class="catalog__product-info">
             <h3 class="catalog__product-name">
                 {{ product.name }}
@@ -10,13 +10,14 @@
                 {{ product.description }}
             </p>
             <strong class="catalog__product-price">
-                {{ product.price }} руб.
+                {{ product.price.toLocaleString() }} руб.
             </strong>
         </div>
     </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: "ProductItem",
   props: {
@@ -25,6 +26,12 @@ export default {
       default() {
         return {}
       }
+    }
+  },
+  methods: {
+    ...mapActions(['deleteProduct']),
+    deleteItem(){
+      this.deleteProduct(this.product)
     }
   }
 }
